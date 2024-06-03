@@ -1,0 +1,200 @@
+<app-header></app-header>
+<div class="add-party">
+  <div class="container">
+  <h2>{{ itemForm.get('id')?.value ? 'Edit Item' : 'Add Item' }}</h2>
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div class="card p-3">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter name" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="company_name" class="form-label">Company Name</label>
+          <input type="text" id="company_name" formControlName="company_name" class="form-control" placeholder="Enter company name" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter email" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="mobile_no" class="form-label">Mobile Number</label>
+          <input type="text" id="mobile_no" formControlName="mobile_no" class="form-control" placeholder="Enter mobile number" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="telephone_no" class="form-label">Telephone Number</label>
+          <input type="text" id="telephone_no" formControlName="telephone_no" class="form-control" placeholder="Enter telephone number" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="whatsapp_no" class="form-label">Whatsapp Number</label>
+          <input type="text" id="whatsapp_no" formControlName="whatsapp_no" class="form-control" placeholder="Enter Whatsapp number" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="gstin" class="form-label">GSTIN</label>
+          <input type="text" id="gstin" formControlName="gstin" class="form-control" placeholder="Enter GSTIN" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="pan_no" class="form-label">PAN Number</label>
+          <input type="text" id="pan_no" formControlName="pan_no" class="form-control" placeholder="Enter PAN number" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="credit_limit" class="form-label">Credit Limit</label>
+          <input type="number" id="credit_limit" formControlName="credit_limit" class="form-control" placeholder="Enter credit limit" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3 form-check">
+          <input type="checkbox" id="apply_tds" formControlName="apply_tds" class="form-check-input" />
+          <label for="apply_tds" class="form-check-label">Apply TDS</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="date_of_birth" class="form-label">Date of Birth</label>
+          <input type="date" id="date_of_birth" formControlName="date_of_birth" class="form-control" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="anniversary_date" class="form-label">Anniversary Date</label>
+          <input type="date" id="anniversary_date" formControlName="anniversary_date" class="form-control" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3 form-check">
+          <input type="checkbox" id="is_active" formControlName="is_active" class="form-check-input" />
+          <label for="is_active" class="form-check-label">Is Active</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3 form-check">
+          <input type="checkbox" id="login_access" formControlName="login_access" class="form-check-input" />
+          <label for="login_access" class="form-check-label">Login Access</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" id="image" class="form-control" accept="image/*" (change)="onImageChange($event)" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="remark" class="form-label">Remark</label>
+          <textarea id="remark" formControlName="remark" class="form-control" placeholder="Enter remark"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card p-3">
+    <div class="row">
+      <!-- Address Section -->
+      <div class="col-md-12">
+        <div formArrayName="address">
+          <div *ngFor="let address of addressArray.controls; let i = index" [formGroupName]="i">
+            <h4>Address {{i + 1}}</h4>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="street{{i}}" class="form-label">Street</label>
+                  <input type="text" id="street{{i}}" formControlName="street" class="form-control" placeholder="Enter street" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="city{{i}}" class="form-label">City</label>
+                  <input type="text" id="city{{i}}" formControlName="city" class="form-control" placeholder="Enter city" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="state{{i}}" class="form-label">State</label>
+                  <input type="text" id="state{{i}}" formControlName="state" class="form-control" placeholder="Enter state" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="country{{i}}" class="form-label">Country</label>
+                  <input type="text" id="country{{i}}" formControlName="country" class="form-control" placeholder="Enter country" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="zip{{i}}" class="form-label">Zip</label>
+                  <input type="text" id="zip{{i}}" formControlName="zip" class="form-control" placeholder="Enter zip" />
+                </div>
+              </div>
+            </div>
+            <button mat-icon-button class="btn btn-danger mb-3 mr-3" (click)="removeAddress(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button class="btn btn-primary mb-3" (click)="addAddress()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Bank Details Section -->
+      <div class="col-md-12">
+        <div formArrayName="bank_id">
+          <div *ngFor="let bank of bankArray.controls; let i = index" [formGroupName]="i">
+            <h4>Bank Details {{i + 1}}</h4>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="bank_name{{i}}" class="form-label">Bank Name</label>
+                  <input type="text" id="bank_name{{i}}" formControlName="bank_name" class="form-control" placeholder="Enter bank name" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="account_number{{i}}" class="form-label">Account Number</label>
+                  <input type="text" id="account_number{{i}}" formControlName="account_number" class="form-control" placeholder="Enter account number" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="ifsc_code{{i}}" class="form-label">IFSC Code</label>
+                  <input type="text" id="ifsc_code{{i}}" formControlName="ifsc_code" class="form-control" placeholder="Enter IFSC code" />
+                </div>
+              </div>
+            </div>
+            <button mat-icon-button class="btn btn-danger mb-3 mr-3" (click)="removeBank(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button class="btn btn-primary mb-3" (click)="addBank()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary mt-3 mb-3">Save</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>

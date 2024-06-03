@@ -1,0 +1,11 @@
+nav{
+    box-shadow: 20px 3px 4px #ccc;
+    background: #fff;
+    margin-bottom: 33px;
+    border-bottom: 2px solid blue;
+}
+nav ul{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
